@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Download } from "lucide-react";
 
 const About = () => {
-  const profileImageSrc = "/Profile2.jpg";
-  const resumeLink = "/resume.pdf";
+  // Use process.env.PUBLIC_URL to properly resolve public folder assets
+  const profileImageSrc = process.env.PUBLIC_URL + "/Profile2.jpg";
+  const resumeLink = process.env.PUBLIC_URL + "/resume.pdf";
 
   const [isInView, setIsInView] = useState(false);
   const aboutRef = useRef(null);
@@ -13,7 +14,7 @@ const About = () => {
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.8 } 
+      { threshold: 0.8 }
     );
 
     if (aboutRef.current) {
@@ -64,7 +65,7 @@ const About = () => {
           {/* Text Content */}
           <div className="w-full md:w-2/3 text-center md:text-left">
             {aboutContent.map((paragraph, index) => (
-              <p 
+              <p
                 key={index}
                 className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6 max-w-none md:max-w-2xl mx-auto md:mx-0"
               >

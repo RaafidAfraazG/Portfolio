@@ -176,7 +176,7 @@ const ProfileImage = ({ isAnimated }) => {
       <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 p-1 shadow-2xl">
         <div className="w-full h-full rounded-full overflow-hidden bg-gray-800">
         <img
-  src="/Profile.jpg"
+  src={process.env.PUBLIC_URL + "/Profile.jpg"}
   alt="Raafid Afraaz"
   className="object-cover object-center w-full h-full scale-150 transition-transform duration-500"
 />
@@ -234,14 +234,14 @@ const ActionButtons = ({ typingComplete }) => (
       typingComplete ? "opacity-100" : "opacity-0"
     }`}
   >
-    <a
-      href="/resume.pdf"
-      download
-      className="flex items-center bg-blue-500 hover:bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-lg font-medium transition shadow-lg hover:shadow-xl w-full sm:w-auto justify-center"
-    >
-      <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-      Resume
-    </a>
+   <a
+  href={process.env.PUBLIC_URL + "/resume.pdf"}
+  download
+  className="flex items-center bg-blue-500 hover:bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-lg font-medium transition shadow-lg hover:shadow-xl w-full sm:w-auto justify-center"
+>
+  <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+  Resume
+</a>
 
     <a
       href="#projects"

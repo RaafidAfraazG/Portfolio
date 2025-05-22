@@ -2,6 +2,9 @@ import React from 'react';
 import { FaGithub } from "react-icons/fa";
 
 const ProjectCard = ({ title, description, technologies, media, mediaType = "image", githubLink }) => {
+  // Prefix media path with PUBLIC_URL to load from public folder
+  const mediaSrc = process.env.PUBLIC_URL + media;
+
   return (
     <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-lg transition transform hover:-translate-y-1 hover:shadow-xl flex flex-col h-full group">
       {/* Browser-style mockup container */}
@@ -13,13 +16,11 @@ const ProjectCard = ({ title, description, technologies, media, mediaType = "ima
           <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500"></div>
         </div>
 
-
-
         {/* Media preview */}
         <div className="relative w-full bg-white rounded overflow-hidden flex items-center justify-center h-32 sm:h-40 md:h-44 lg:h-48">
           {mediaType === "video" ? (
             <video
-              src={media}
+              src={mediaSrc}
               className="h-full w-full object-contain"
               autoPlay
               loop
@@ -28,7 +29,7 @@ const ProjectCard = ({ title, description, technologies, media, mediaType = "ima
             />
           ) : (
             <img
-              src={media}
+              src={mediaSrc}
               alt={title}
               className="mx-auto h-full object-contain"
             />
@@ -53,7 +54,7 @@ const ProjectCard = ({ title, description, technologies, media, mediaType = "ima
           )}
         </div>
         <p className="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed flex-grow">{description}</p>
-        
+
         {/* Show only first 3 tech badges + counter if more */}
         <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
           {technologies.slice(0, 3).map((tech, index) => (
